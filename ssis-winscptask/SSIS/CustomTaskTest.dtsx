@@ -1,0 +1,55 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/19/2016 6:38:11 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="THOR"
+  DTS:CreatorName="THOR\brata_000"
+  DTS:DTSID="{11EBB754-2543-456C-85B4-AE93CDDAFAAE}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.1100.286"
+  DTS:LocaleID="1045"
+  DTS:ObjectName="CustomTaskTest"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{B7446E59-1B01-4499-BD70-3485B7AA1FFE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\WinSCP Task"
+      DTS:CreationName="ssis_winscptask.WinScpTask, ssis-winscptask, Version=1.0.0.0, Culture=neutral, PublicKeyToken=62afeffbe3b324e5"
+      DTS:Description="WinSCP Task"
+      DTS:DTSID="{B80C8207-7530-4E96-8DD0-8FB8CE0F8989}"
+      DTS:ExecutableType="ssis_winscptask.WinScpTask, ssis-winscptask, Version=1.0.0.0, Culture=neutral, PublicKeyToken=62afeffbe3b324e5"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="WinSCP Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="140,42"
+          Id="Package\WinSCP Task"
+          TopLeft="47,76" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
