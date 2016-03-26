@@ -1,0 +1,16 @@
+﻿You have to register WinSCPnet.dll in Global Assembly Cache or ssis-winscptask won't work
+eg.:
+
+----------
+c:\> cd tools\winscp-sdk
+c:\tools\winscp-sdk>"C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools\gacutil.exe" -if WinSCPnet.dll
+
+c:\tools\winscp-sdk>"C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools\gacutil.exe" -l WinSCPnet
+Microsoft (R) .NET Global Assembly Cache Utility.  Version 4.0.30319.0
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+The Global Assembly Cache contains the following assemblies:
+  WinSCPnet, Version=1.2.10.5874, Culture=neutral, PublicKeyToken=2271ec4a3c56d0bf, processorArchitecture=MSIL
+
+Number of items = 1
+----------
