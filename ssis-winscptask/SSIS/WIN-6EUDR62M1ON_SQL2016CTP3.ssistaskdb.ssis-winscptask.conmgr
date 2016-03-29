@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="WIN-6EUDR62M1ON_SQL2016CTP3.ssistaskdb.ssis-winscptask"
+  DTS:DTSID="{E9D293B5-B161-4FC1-8133-DFCC40B7D38D}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=WIN-6EUDR62M1ON\SQL2016CTP3;User ID=ssis-winscptask;Initial Catalog=ssistaskdb;Provider=SQLNCLI11.1;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAUok1rvVP8UKTIYU5GX3IoQAAAAACAAAAAAAQZgAAAAEAACAAAADHa2noHbQAFlmEJLCYAn374Yr37x8RIzMpIRw+CggPEwAAAAAOgAAAAAIAACAAAACfjpAhx5TG3q8jzc3pHtfZ0lI6kvWsqbeK+tdavk/5ZYAAAADwMKuIJ7r6D1/N9DlqPwTbq5Fjk1MCtDRF8de6LYy6MTZev0ei7+hXGe+NhL9y7+UVCwVpVuqSxIq5cxC2+EF5CVOQ2iX9tToNpCs7e+TBbloNZrG3QAxTSI+rBQAxdvvlBwkXcxp8GVOuuR8ba/RYBZpmyWc4URLh0Ah1/sSANEAAAABh3bnuPOGyMfb3Hu2gINDnS2ksif5yoSce+M56ZJa9SlE94cq86Jvn5aFWIZwrrE6WCyPv2UT8z1MGqUEldvV1</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

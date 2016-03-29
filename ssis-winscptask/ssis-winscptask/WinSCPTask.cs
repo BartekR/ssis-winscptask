@@ -4,46 +4,23 @@ using Microsoft.SqlServer.Dts.Runtime;
 using System.ComponentModel;
 using WinSCP;
 
-namespace ssis_winscptask
+namespace BartekR.WinSCP.CustomTask
 {
     [DtsTask(
-        Description = "WinSCP Task - SFTP, FTP/TLS, SCP handling using WinSCP .NET library",
+        Description = "WinSCP Task - SFTP, FTPS, FTP handling using WinSCP .NET library",
         DisplayName = "WinSCP Task"
     )]
     public class WinScpTask : Task
     {
-        #region Configuration variables
+       
+        public WinScpTask()
+        {
+            
+        }
 
-        [Category("WinSCP Session Options")]
-        [Description("FTPS mode")]
-        public FtpSecure FtpSecure { get; set; }
+        public string WinSCPConnectionManagerName { get; set; }
+        public string SQLServerConnectionManagerName { get; set; }
 
-        [Category("WinSCP Session Options")]
-        [Description("Name of the host to connect to. Mandatory property.")]
-        public string HostName { get; set; }
-
-        [Category("WinSCP Session Options")]
-        [Description("Username for authentication. Mandatory property.")]
-        public string UserName { get; set; }
-
-        [Category("WinSCP Session Options")]
-        [Description("Password for authentication.")]
-        [PasswordPropertyText(true)]
-        public string Password { get; set; }
-
-        [Category("WinSCP Session Options")]
-        [Description("Protocol to use for the session.")]
-        public Protocol Protocol { get; set; }
-
-        [Category("WinSCP Session Options")]
-        [Description("Port number to connect to. Keep default 0 to use default port for the protocol.")]
-        public int PortNumber { get; set; }
-
-        //[Category("WinSCP Session Options")]
-        //[Description("Server response timeout. Defaults to 15 seconds.")]
-        //public TimeSpan Timeout { get; set; }
-
-        #endregion
 
         public override void InitializeTask(Connections connections, VariableDispenser variableDispenser, IDTSInfoEvents events, IDTSLogging log, EventInfos eventInfos, LogEntryInfos logEntryInfos, ObjectReferenceTracker refTracker)
         {
@@ -52,12 +29,60 @@ namespace ssis_winscptask
 
         public override DTSExecResult Validate(Connections connections, VariableDispenser variableDispenser, IDTSComponentEvents componentEvents, IDTSLogging log)
         {
-            return base.Validate(connections, variableDispenser, componentEvents, log);
+            try
+            {
+                ConnectionManager cmW = connections[this.WinSCPConnectionManagerName];
+                //return DTSExecResult.Success;
+            }
+            catch (System.Exception e)
+            {
+                componentEvents.FireError(0, "WinSCPTask", "Invalid WinSCP connection manager. " + e.Message, "", 0);
+                return DTSExecResult.Failure;
+            }
+
+            try
+            {
+                ConnectionManager cmS = connections[this.SQLServerConnectionManagerName];
+                //return DTSExecResult.Success;
+            }
+            catch (System.Exception e)
+            {
+                componentEvents.FireError(0, "WinSCPTask", "Invalid SQL Server connection manager. " + e.Message, "", 0);
+                return DTSExecResult.Failure;
+            }
+
+            return DTSExecResult.Success;
+
         }
 
         public override DTSExecResult Execute(Connections connections, VariableDispenser variableDispenser, IDTSComponentEvents componentEvents, IDTSLogging log, object transaction)
         {
-            return base.Execute(connections, variableDispenser, componentEvents, log, transaction);
+            try
+            {
+                ConnectionManager cmW = connections[this.WinSCPConnectionManagerName];
+                object connection = cmW.AcquireConnection(transaction);
+                
+            }
+            catch (System.Exception e)
+            {
+                componentEvents.FireError(0, "WinSCPTask - WinSCPConnection", e.Message, "", 0);
+                return DTSExecResult.Failure;
+            }
+
+            try
+            {
+                ConnectionManager cmS = connections[this.SQLServerConnectionManagerName];
+                object connection = cmS.AcquireConnection(transaction);
+
+            }
+            catch (System.Exception e)
+            {
+                componentEvents.FireError(0, "WinSCPTask - SqlServerConnection", e.Message, "", 0);
+                return DTSExecResult.Failure;
+            }
+
+            return DTSExecResult.Success;
+            //return base.Execute(connections, variableDispenser, componentEvents, log, transaction);
         }
     }
 }
