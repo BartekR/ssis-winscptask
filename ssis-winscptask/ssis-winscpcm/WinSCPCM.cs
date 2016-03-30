@@ -11,6 +11,8 @@ namespace BartekR.WinSCP.CustomTask
     {
         #region Configuration variables
 
+        // all descriptions are from official WinSCPNet documentation.
+
         [Category("WinSCP Session Options")]
         [Description("FTPS mode")]
         public FtpSecure FtpSecure { get; set; }
@@ -49,19 +51,6 @@ namespace BartekR.WinSCP.CustomTask
         public string ExecutablePath { get; set; }
         #endregion
 
-        public override string ConnectionString
-        {
-            get
-            {
-                return base.ConnectionString;
-            }
-
-            set
-            {
-                base.ConnectionString = value;
-            }
-        }
-
         Session s = new Session();
 
         public WinSCPConnectionManager()
@@ -95,7 +84,25 @@ namespace BartekR.WinSCP.CustomTask
         public override void ReleaseConnection(object connection)
         {
             this.s.Close();
-            base.ReleaseConnection(connection);
+            //base.ReleaseConnection(connection);
+        }
+
+        /// <summary>
+        /// Simple validation. Runtime only!
+        /// </summary>
+        /// <param name="infoEvents"></param>
+        /// <returns></returns>
+        public override DTSExecResult Validate(IDTSInfoEvents infoEvents)
+        {
+            if (string.IsNullOrEmpty(this.HostName) || string.IsNullOrEmpty(this.UserName) || string.IsNullOrEmpty(this.Password))
+            {
+                infoEvents.FireError(0, "WinSCP Connection Manager", "Hostname, username and password are mandatory.", string.Empty, 0);
+                return DTSExecResult.Failure;
+            }
+            else
+            {
+                return DTSExecResult.Success;
+            }
         }
 
     }
