@@ -11,8 +11,8 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="CustomTaskTest"
   DTS:PackageType="5"
-  DTS:VersionBuild="45"
-  DTS:VersionGUID="{A91320CE-0409-4B05-8DF2-5699CE851A3C}">
+  DTS:VersionBuild="47"
+  DTS:VersionGUID="{CDF01F8D-C197-4298-B916-CD964EF0CC9F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
