@@ -26,11 +26,12 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">THOR</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAUok1rvVP8UKTIYU5GX3IoQAAAAACAAAAAAAQZgAAAAEAACAAAACS2NvYluoEkLuge+id7Qr26FFUluRWy4uEFHxrhyHF+gAAAAAOgAAAAAIAACAAAACgpM4rBnK7kFSyZtsTHU4PNaYHf9TEiLUH6VBbbo/20ZAAAAB26HyDufxwQdyg3GIoVcEtWFzvsKV4MLcb8W/yu1JMOi+5ATEw52kJuMhvvN5S7pJBN4V3ZpkG09/mF+C27GcF/KtG/y9FRmNwSwSfjc41r7mJCwBsYoSqkogIShHkrucnROOOsh1yrX1hlp8/dQaDI7CVzNvW5jjt9UFcTznBNd+HCuATFKhUKQWORrt0oq1AAAAAns26WD5gKR9VHsVMEtI9KfGs+dDjH4lMKenTZaofmeUrkQiaqwEkmMMIn8thkkcxznDCwZ3t1wDqM4mL8qUBeA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAUok1rvVP8UKTIYU5GX3IoQAAAAACAAAAAAAQZgAAAAEAACAAAAD+mcIRNFBEOxurg1s/LENulputM6MowwQ/DIS4cwcdwwAAAAAOgAAAAAIAACAAAABnfCtdaEjfAv6lVnx9VmMYCHNzXEYDgc+scnO1//G+GZAAAAAHxTbtcVYLKypetosRaQbUFC/5Ngp9JQNyYly6uFJtPbbgq7v9ZtHEEHaVAAs6dboH7N7qBhpOj5UQMPMng2SxRI6pcBLbH7VL5wQd7DhOY2qDtvwPB3ioPi91dsSj6t5j+7L/XsKOQb8zpiCZ6cMlQRa0VX8EeYgTzfojHKGrLrbWLMnZVwOC2L9sB89Bz0JAAAAA7jVUSML4smH5QjfhsCAjCqx+Gs4CjB5nzo/Zw4uUw6aR1LnpSo3R6TwO3r8jiZY5xTE0eh/ZCdQpnXUDqKHPHQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="CustomTaskTest.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="ScriptTaskTest.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="WIN-6EUDR62M1ON_SQL2016CTP3.ssistaskdb.ssis-winscptask.conmgr" />
@@ -134,16 +135,105 @@
                 <SSIS:Property SSIS:Name="Name">CustomTaskTest</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">47</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">57</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{CDF01F8D-C197-4298-B916-CD964EF0CC9F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{32A5FEE0-67AB-48D9-B18F-A5C8A699AD35}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="CM.SQLServer_LocalManager.ssistaskdb.ssis-winscptask.ConnectionString">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=WIN-6EUDR62M1ON\SQL2016CTP3;User ID=ssis-winscptask;Initial Catalog=ssistaskdb;Provider=SQLNCLI11.1;Auto Translate=False;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.SQLServer_LocalManager.ssistaskdb.ssis-winscptask.InitialCatalog">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">ssistaskdb</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.SQLServer_LocalManager.ssistaskdb.ssis-winscptask.Password">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.SQLServer_LocalManager.ssistaskdb.ssis-winscptask.RetainSameConnection">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.SQLServer_LocalManager.ssistaskdb.ssis-winscptask.ServerName">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">WIN-6EUDR62M1ON\SQL2016CTP3</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.SQLServer_LocalManager.ssistaskdb.ssis-winscptask.UserName">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">ssis-winscptask</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
                 <SSIS:Parameter SSIS:Name="CM.WinSCP Connection Manager.ConnectionString">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
@@ -281,6 +371,23 @@
                   </SSIS:Properties>
                 </SSIS:Parameter>
               </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="ScriptTaskTest.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{46FBFA9D-304E-44D7-BC0C-A264604D91AD}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">ScriptTaskTest</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{14C2A2AF-0A68-4828-AF51-2EBAFD0345B1}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
             </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>

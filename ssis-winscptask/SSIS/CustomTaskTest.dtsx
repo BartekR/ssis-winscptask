@@ -11,15 +11,30 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="CustomTaskTest"
   DTS:PackageType="5"
-  DTS:VersionBuild="47"
-  DTS:VersionGUID="{CDF01F8D-C197-4298-B916-CD964EF0CC9F}">
+  DTS:VersionBuild="57"
+  DTS:VersionGUID="{32A5FEE0-67AB-48D9-B18F-A5C8A699AD35}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SQLServer_LocalManager.ssistaskdb.ssis-winscptask]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{EB8551CE-4820-464A-9637-CE0DE76F4659}"
+      DTS:ObjectName="SQLServer_LocalManager.ssistaskdb.ssis-winscptask">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=WIN-6EUDR62M1ON\SQL2016CTP3;User ID=ssis-winscptask;Initial Catalog=ssistaskdb;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAUok1rvVP8UKTIYU5GX3IoQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC3XGUKcsuzcEaA7+8VWolnJO7uuUydjYNLB5/5CuPXdAAAAAAOgAAAAAIAACAAAADlPhFgca7wJ8xM5QG1Fzz/XM1fKLzuNllIctT1RbhC+iAAAADamJ8zeApIFykRVsfc+8kGrfV+nVE3XATuAYjzhkaZ2UAAAADmDMRYRJuNu5T0Jrpkp0uFMNGQ9ElEB91oQg1gZ0QIBVyElKvLwWL0rnmOabBuJbvbWU96j6LZVN6IMuRyWW67</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[WinSCP Connection Manager]"
       DTS:CreationName="WINSCP"
-      DTS:DTSID="{604C40E7-63E6-49E8-B13D-55A800634526}"
+      DTS:DTSID="{A32A3B99-909D-4CA3-A82B-0024AAC9CAB8}"
       DTS:ObjectName="WinSCP Connection Manager">
       <DTS:ObjectData>
         <InnerObject>
@@ -57,7 +72,7 @@
       DTS:refId="Package\WinSCP Task"
       DTS:CreationName="BartekR.WinSCP.CustomTask.WinScpTask, BartekR.WinSCP.Task, Version=1.0.0.0, Culture=neutral, PublicKeyToken=62afeffbe3b324e5"
       DTS:Description="WinSCP Task"
-      DTS:DTSID="{E0279094-5741-4E6E-9A96-BCA885973625}"
+      DTS:DTSID="{A5AC758F-0B14-409A-9E35-081A6C4F5795}"
       DTS:ExecutableType="BartekR.WinSCP.CustomTask.WinScpTask, BartekR.WinSCP.Task, Version=1.0.0.0, Culture=neutral, PublicKeyToken=62afeffbe3b324e5"
       DTS:LocaleID="-1"
       DTS:ObjectName="WinSCP Task"
@@ -90,7 +105,7 @@
         <NodeLayout
           Size="140,42"
           Id="Package\WinSCP Task"
-          TopLeft="230,75" />
+          TopLeft="352,117" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
