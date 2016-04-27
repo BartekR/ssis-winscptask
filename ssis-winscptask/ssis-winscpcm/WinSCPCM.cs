@@ -78,12 +78,17 @@ namespace BartekR.WinSCP.CustomTask
 
             this.s.Open(so);
 
-            return base.AcquireConnection(txn);
+            return this.s;
+            //return base.AcquireConnection(txn);
         }
 
         public override void ReleaseConnection(object connection)
         {
-            this.s.Close();
+            
+            if(this.s.Opened)
+            {
+                this.s.Close();
+            }
             //base.ReleaseConnection(connection);
         }
 

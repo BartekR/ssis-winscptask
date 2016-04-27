@@ -7,7 +7,7 @@
     <ProjectGuid>{127457C1-19C8-4F38-B3A2-A2995F450096}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BartekR.WinSCP.CM</RootNamespace>
+    <RootNamespace>BartekR.WinSCP.CustomCM</RootNamespace>
     <AssemblyName>BartekR.WinSCP.ConnectionManager</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
