@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using Microsoft.SqlServer.Dts.Runtime;
+
 using System.ComponentModel;
 using WinSCP;
 
@@ -43,7 +45,6 @@ namespace BartekR.WinSCP.CustomTask
             try
             {
                 ConnectionManager cmS = connections[this.SQLServerConnectionManagerName];
-                //return DTSExecResult.Success;
             }
             catch (System.Exception e)
             {
@@ -57,32 +58,35 @@ namespace BartekR.WinSCP.CustomTask
 
         public override DTSExecResult Execute(Connections connections, VariableDispenser variableDispenser, IDTSComponentEvents componentEvents, IDTSLogging log, object transaction)
         {
+            // read remote files
             try
             {
-                ConnectionManager cmW = connections[this.WinSCPConnectionManagerName];
-                object connection = cmW.AcquireConnection(transaction);
+                WinSCPWrapper p = new WinSCPWrapper(connections[this.WinSCPConnectionManagerName], transaction);
+                IEnumerable<RemoteFileInfo> remoteFiles = p.SearchDirectory("/", "*.*", 0);
+                p.CloseSession();
                 
             }
             catch (System.Exception e)
             {
-                componentEvents.FireError(0, "WinSCPTask - WinSCPConnection", e.Message, "", 0);
+                componentEvents.FireError(0, "WinSCPTask.Execute - WinSCPConnection", e.Message, "", 0);
                 return DTSExecResult.Failure;
             }
 
+            // compare remote files with local metadata; if using OLEDB - it can be tricky
             try
             {
-                ConnectionManager cmS = connections[this.SQLServerConnectionManagerName];
-                object connection = cmS.AcquireConnection(transaction);
+                SQLServerWrapper s = new SQLServerWrapper(connections[this.SQLServerConnectionManagerName], transaction);
+                s.getData();
+                
 
             }
             catch (System.Exception e)
             {
-                componentEvents.FireError(0, "WinSCPTask - SqlServerConnection", e.Message, "", 0);
+                componentEvents.FireError(0, "WinSCPTask.Execute - SqlServerConnection", e.Message, "", 0);
                 return DTSExecResult.Failure;
             }
 
             return DTSExecResult.Success;
-            //return base.Execute(connections, variableDispenser, componentEvents, log, transaction);
         }
     }
 }
