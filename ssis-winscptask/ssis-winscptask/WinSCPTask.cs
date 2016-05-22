@@ -67,19 +67,14 @@ namespace BartekR.WinSCP.CustomTask
 
         public override DTSExecResult Execute(Connections connections, VariableDispenser variableDispenser, IDTSComponentEvents componentEvents, IDTSLogging log, object transaction)
         {
-            // read remote files
+            WinSCPWrapper p;
+            SQLServerWrapper s;
+            IEnumerable<RemoteFileInfo> remoteFiles;
+
+            // connect to servers
             try
             {
-                WinSCPWrapper p = new WinSCPWrapper(connections[this.WinSCPConnectionManagerName], transaction);
-                IEnumerable<RemoteFileInfo> remoteFiles = p.SearchDirectory("/", null, 0);
-
-                foreach(RemoteFileInfo remoteFile in remoteFiles)
-                {
-                    System.Diagnostics.Debug.Print(remoteFile.FullName);
-                }
-
-                p.CloseSession();
-                
+                p = new WinSCPWrapper(connections[this.WinSCPConnectionManagerName], transaction);
             }
             catch (System.Exception e)
             {
@@ -90,16 +85,20 @@ namespace BartekR.WinSCP.CustomTask
             // compare remote files with local metadata; if using OLEDB - it can be tricky
             try
             {
-                SQLServerWrapper s = new SQLServerWrapper(connections[this.SQLServerConnectionManagerName], transaction);
-                s.getData();
-                
-
+                s = new SQLServerWrapper(connections[this.SQLServerConnectionManagerName], transaction);
             }
             catch (System.Exception e)
             {
                 componentEvents.FireError(0, "WinSCPTask.Execute - SqlServerConnection", e.Message, "", 0);
                 return DTSExecResult.Failure;
             }
+
+            // get remote files
+            remoteFiles = p.SearchDirectory(DirectoryPath, null, 0);
+            s.SaveFilesToDatabase(remoteFiles);
+
+            // close connections
+            p.CloseSession();
 
             return DTSExecResult.Success;
         }
