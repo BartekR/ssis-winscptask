@@ -85,11 +85,11 @@ namespace BartekR.WinSCP.CustomTask
         public override void ReleaseConnection(object connection)
         {
             
-            if(this.s.Opened)
-            {
-                this.s.Close();
-            }
-            //base.ReleaseConnection(connection);
+            //if(this.s.Opened)
+            //{
+            //    this.s.Close();
+            //}
+            base.ReleaseConnection(connection);
         }
 
         /// <summary>
