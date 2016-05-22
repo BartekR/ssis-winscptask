@@ -4,6 +4,7 @@ using System.Data.Common;
 using System.Data;
 using Wrap = Microsoft.SqlServer.Dts.Runtime.Wrapper;
 using System.Data.SqlClient;
+using WinSCP;
 
 using Microsoft.SqlServer.Dts.Runtime;
 
@@ -15,8 +16,6 @@ namespace BartekR.WinSCP.CustomTask
         private object txn;
 
         private DbConnection connection;
-
-        System.Data.OleDb.OleDbConnection c;
 
         public SQLServerWrapper(ConnectionManager cm, object txn)
         {
@@ -78,6 +77,37 @@ namespace BartekR.WinSCP.CustomTask
             LocalFileInfo localFiles = new LocalFileInfo();
             return localFiles;
         }
-        
+
+        public void SaveFilesToDatabase(IEnumerable<RemoteFileInfo> remoteFiles)
+        {
+            foreach (RemoteFileInfo fileInfo in remoteFiles)
+            {
+                DbCommand cmd = this.connection.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = @"
+                INSERT INTO dbo.DownloadedFiles (RemoteFilePath, RemoteDirectoryName, LocalFileName, AuditKey, FileStatusId)
+                VALUES (?, ?, ?, 1, 1);";
+
+                var paramRemoteFilePath = cmd.CreateParameter();
+                paramRemoteFilePath.ParameterName = "RemoteFilePath";
+                paramRemoteFilePath.Value = fileInfo.FullName.Replace("/", "_");
+
+                var paramRemoteDirectoryName = cmd.CreateParameter();
+                paramRemoteDirectoryName.ParameterName = "RemoteDirectoryName";
+                // GetDirectoryName returns path with backslash
+                paramRemoteDirectoryName.Value = System.IO.Path.GetDirectoryName(fileInfo.FullName).Replace("\\", "/");
+
+                var paramLocalFileName = cmd.CreateParameter();
+                paramLocalFileName.ParameterName = "LocalFileName";
+                paramLocalFileName.Value = fileInfo.Name.Replace("/", "_");
+
+                cmd.Parameters.Add(paramRemoteFilePath);
+                cmd.Parameters.Add(paramRemoteDirectoryName);
+                cmd.Parameters.Add(paramLocalFileName);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
     }
 }
