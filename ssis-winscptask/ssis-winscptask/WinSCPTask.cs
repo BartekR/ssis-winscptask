@@ -20,8 +20,17 @@ namespace BartekR.WinSCP.CustomTask
             
         }
 
+        [Category("WinSCPTask")]
         public string WinSCPConnectionManagerName { get; set; }
+
+        [Category("WinSCPTask")]
         public string SQLServerConnectionManagerName { get; set; }
+
+        [Category("WinSCPTask")]
+        public string DirectoryPath { get; set; }
+
+        [Category("WinSCPTask")]
+        public string DirectoryMask { get; set; }
 
 
         public override void InitializeTask(Connections connections, VariableDispenser variableDispenser, IDTSInfoEvents events, IDTSLogging log, EventInfos eventInfos, LogEntryInfos logEntryInfos, ObjectReferenceTracker refTracker)
@@ -62,7 +71,13 @@ namespace BartekR.WinSCP.CustomTask
             try
             {
                 WinSCPWrapper p = new WinSCPWrapper(connections[this.WinSCPConnectionManagerName], transaction);
-                IEnumerable<RemoteFileInfo> remoteFiles = p.SearchDirectory("/", "*.*", 0);
+                IEnumerable<RemoteFileInfo> remoteFiles = p.SearchDirectory("/", null, 0);
+
+                foreach(RemoteFileInfo remoteFile in remoteFiles)
+                {
+                    System.Diagnostics.Debug.Print(remoteFile.FullName);
+                }
+
                 p.CloseSession();
                 
             }
