@@ -80,3 +80,33 @@ CREATE TABLE dbo.ServerFiles (
 	LocalFileName		VARCHAR(255)						NOT NULL
 );
 GO
+
+IF SCHEMA_ID(N'config') IS NULL
+	EXEC sp_executesql N'CREATE SCHEMA config AUTHORIZATION dbo';
+GO
+
+CREATE TABLE config.ServerCatalog (
+	Name		VARCHAR(255)					NOT NULL,
+	IsActive	BIT
+		CONSTRAINT DF_ServerCatalog_IsActive
+				DEFAULT 1						NOT NULL
+);
+GO
+
+CREATE TABLE config.ReimportFiles (
+	RemoteFilePath		VARCHAR(255)			NOT NULL,
+	RemoteDirectoryName	VARCHAR(255)			NOT NULL,
+	IsActive			BIT
+		CONSTRAINT DF_ReimportFiles_IsActive
+			DEFAULT 1							NOT NULL
+);
+GO
+
+CREATE TABLE config.IgnoreFiles (
+	RemoteFilePath		VARCHAR(255)			NOT NULL,
+	RemoteDirectoryName	VARCHAR(255)			NOT NULL,
+	Reason				VARCHAR(150)			NOT NULL,
+	InsertedByLogin		VARCHAR(128)			NOT NULL,
+	AuditKey			INT
+);
+GO
