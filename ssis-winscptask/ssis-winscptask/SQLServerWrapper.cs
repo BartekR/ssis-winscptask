@@ -78,19 +78,21 @@ namespace BartekR.WinSCP.CustomTask
             return localFiles;
         }
 
-        public void SaveFilesToDatabase(IEnumerable<RemoteFileInfo> remoteFiles)
+        public void SaveServerFileNamesToDatabase(IEnumerable<RemoteFileInfo> remoteFiles)
         {
             foreach (RemoteFileInfo fileInfo in remoteFiles)
             {
                 DbCommand cmd = this.connection.CreateCommand();
                 cmd.CommandType = CommandType.Text;
+
+                //TODO: table name parametrization
                 cmd.CommandText = @"
-                INSERT INTO dbo.DownloadedFiles (RemoteFilePath, RemoteDirectoryName, LocalFileName, AuditKey, FileStatusId)
-                VALUES (?, ?, ?, 1, 1);";
+                INSERT INTO dbo.ServerFiles (RemoteFilePath, RemoteDirectoryName, LocalFileName)
+                VALUES (?, ?, ?);";
 
                 var paramRemoteFilePath = cmd.CreateParameter();
                 paramRemoteFilePath.ParameterName = "RemoteFilePath";
-                paramRemoteFilePath.Value = fileInfo.FullName.Replace("/", "_");
+                paramRemoteFilePath.Value = fileInfo.FullName;
 
                 var paramRemoteDirectoryName = cmd.CreateParameter();
                 paramRemoteDirectoryName.ParameterName = "RemoteDirectoryName";
@@ -109,5 +111,19 @@ namespace BartekR.WinSCP.CustomTask
             }
         }
 
+        //TODO: parametrization, SQL Injection prevention
+        public void ClearTable(string downloadedFilesTable, bool truncateDownloadedFilesTable)
+        {
+            if(truncateDownloadedFilesTable == true)
+            {
+                DbCommand cmd = this.connection.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = @"TRUNCATE TABLE " + downloadedFilesTable;
+
+                cmd.ExecuteNonQuery();
+            }
+            
+        }
     }
 }
