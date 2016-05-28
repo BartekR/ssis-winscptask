@@ -27,11 +27,22 @@ namespace BartekR.WinSCP.CustomTask
         public string SQLServerConnectionManagerName { get; set; }
 
         [Category("WinSCPTask")]
+        [Description("List of directories on server to look for files")]
         public string DirectoryPath { get; set; }
+
+        [Category("WinSCPTask")]
+        [Description("Table name with directories on server to iterate over")]
+        public string DirectoryTable { get; set; }
 
         [Category("WinSCPTask")]
         public string DirectoryMask { get; set; }
 
+        [Category("WinSCPTask")]
+        [Description("Files downloaded from server are described in 'DownloadedFilesTable' table; Should it be cleared during each import?")]
+        public bool TruncateDownloadedFilesTable { get; set; }
+
+        [Category("WinSCPTask")]
+        public string ServerFilesTable { get; set; }
 
         public override void InitializeTask(Connections connections, VariableDispenser variableDispenser, IDTSInfoEvents events, IDTSLogging log, EventInfos eventInfos, LogEntryInfos logEntryInfos, ObjectReferenceTracker refTracker)
         {
@@ -71,6 +82,9 @@ namespace BartekR.WinSCP.CustomTask
             SQLServerWrapper s;
             IEnumerable<RemoteFileInfo> remoteFiles;
 
+            // defaults for now
+            ServerFilesTable = "dbo.ServerFiles";
+
             // connect to servers
             try
             {
@@ -95,7 +109,16 @@ namespace BartekR.WinSCP.CustomTask
 
             // get remote files
             remoteFiles = p.SearchDirectory(DirectoryPath, null, 0);
-            s.SaveFilesToDatabase(remoteFiles);
+            
+            // clear DownloadedFiles table (optional)
+            s.ClearTable(ServerFilesTable, TruncateDownloadedFilesTable);
+
+            // save file names to database
+            s.SaveServerFileNamesToDatabase(remoteFiles);
+
+            // check for files to download (compare with existing metadata)
+
+            // download files
 
             // close connections
             p.CloseSession();
