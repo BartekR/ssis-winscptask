@@ -5,10 +5,10 @@
   DTS:CreationName="OLEDB">
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=192.168.56.101;User ID=ssis-winscptask;Initial Catalog=ssistaskdb;Provider=SQLNCLI11.1;Auto Translate=False;">
+      DTS:ConnectionString="Data Source=192.168.56.101\SQL2016;User ID=ssis-winscptask;Initial Catalog=ssistaskdb;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
       <DTS:Password
         DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4H6xLCUO00+Sn2o73lbwTwAAAAACAAAAAAAQZgAAAAEAACAAAAC/w0VOyuUIMHoPyJCuVZPrVk4ABTe1RmqJgGv8iQfPCwAAAAAOgAAAAAIAACAAAAB5eAqaHSkor5fPUE/aVSbPdTKC/GAiOAJUaNn1T8kEzIAAAACcXrc4FixEWph0WcJUZn1oAQMuR75Dv5vnOE5ljq/23QZEnLbqvFsXEjUQtobhUHKDJIuM+cvyAwli7TirgyuCqAJHT96dTevqPbqWTF/ORsngbo7Pe0Xl+fx9kQWZU23PNb2G7qZ7U4ks56YzSieWQOX4r+TajWzmA5/apc1i1kAAAACb8uec5fvlID6BI1fu9U4a+OfhgUSBChenA48Oi773U3Gkro774P/p92NFIEoN+v3MQ4DZsf5skpooWC7hgYlT</DTS:Password>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASZM3Vz0TOEK6Q7EixmObjAAAAAACAAAAAAAQZgAAAAEAACAAAAAe9vedDLdkN5xxWGsy99vDHAJRrzpH7SqNNzNm0rbnIgAAAAAOgAAAAAIAACAAAAASGzNzyvcln3LNRQnXn3TGmxDedYFtinNByh2yfDvTk4AAAABmCsz+ytvDjp/EvvrJAU4LGH8HmI+DEtnzgx8YH68GGC2wJLAMxQVQ1xXk/5T1e0kDHioJtk6sdF8nPVQU1QaiFD2VURWFNsTuQEnnMrs/2uJ7+wvWtkPYRBabkFvbzpbU31+V4FG/xLnbhowS7IOnU9yF+VYM6/HVe5jdwrOJekAAAACSyR4qS0zktEkJyz8TBmDtaYBl9i//GSVrP5Lzs1Me0QnZLQkZagl/t86MrGW0w4w731U/VeTnqZR5ocyYukSy</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>

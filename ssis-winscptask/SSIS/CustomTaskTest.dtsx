@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="3/19/2016 6:38:11 PM"
+  DTS:CreationDate="1/8/2017 12:24:59 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="THOR"
   DTS:CreatorName="THOR\brata_000"
-  DTS:DTSID="{11EBB754-2543-456C-85B4-AE93CDDAFAAE}"
+  DTS:DTSID="{3E7667DA-02CF-43E8-8874-8FD039FC9149}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.1100.286"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
   DTS:LocaleID="1045"
-  DTS:ObjectName="CustomTaskTest"
+  DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="63"
-  DTS:VersionGUID="{F290F723-56D1-4E4C-9809-49B5340D1263}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{FB02D4B5-E01F-486C-8E44-FBAF9D921C2E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[WinSCP Connection Manager]"
       DTS:CreationName="WINSCP"
-      DTS:DTSID="{A32A3B99-909D-4CA3-A82B-0024AAC9CAB8}"
+      DTS:DTSID="{76B00112-1FA3-4913-891C-F387D9BF3303}"
       DTS:ObjectName="WinSCP Connection Manager">
       <DTS:ObjectData>
         <InnerObject>
@@ -44,6 +44,9 @@
           <SshHostKeyFingerprint
             Type="8"
             Value="ssh-rsa 2048 52:4b:46:87:88:a2:90:b5:75:ff:49:ff:57:22:72:42" />
+          <TargetServerVersion
+            Type="3"
+            Value="130" />
           <UserName
             Type="8"
             Value="tester" />
@@ -56,7 +59,8 @@
     <DTS:Executable
       DTS:refId="Package\WinSCP Task"
       DTS:CreationName="BartekR.WinSCP.CustomTask.WinScpTask, BartekR.WinSCP.Task, Version=1.0.0.0, Culture=neutral, PublicKeyToken=62afeffbe3b324e5"
-      DTS:DTSID="{A5AC758F-0B14-409A-9E35-081A6C4F5795}"
+      DTS:Description="WinSCP Task"
+      DTS:DTSID="{DD1AD00D-8979-41C0-BB4E-FCCF42437F16}"
       DTS:ExecutableType="BartekR.WinSCP.CustomTask.WinScpTask, BartekR.WinSCP.Task, Version=1.0.0.0, Culture=neutral, PublicKeyToken=62afeffbe3b324e5"
       DTS:LocaleID="-1"
       DTS:ObjectName="WinSCP Task"
@@ -70,9 +74,21 @@
           <DirectoryPath
             Type="8"
             Value="/" />
+          <DirectoryTable
+            Type="8"
+            Value="" />
+          <ServerFilesTable
+            Type="8"
+            Value="" />
           <SQLServerConnectionManagerName
             Type="8"
             Value="192.168.56.101.ssistaskdb.ssis-winscptask" />
+          <TargetServerVersion
+            Type="3"
+            Value="130" />
+          <TruncateDownloadedFilesTable
+            Type="11"
+            Value="0" />
           <WinSCPConnectionManagerName
             Type="8"
             Value="WinSCP Connection Manager" />
@@ -95,7 +111,7 @@
         <NodeLayout
           Size="140,42"
           Id="Package\WinSCP Task"
-          TopLeft="354,116" />
+          TopLeft="251,85" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
