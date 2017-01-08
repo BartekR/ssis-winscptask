@@ -37,8 +37,11 @@ namespace BartekR.WinSCP.CustomTask
             {
                 this.StartSession();
             }
+
             //Recursivelly enumerate files (EnumerationOptions.AllDirectories)
-            return session.EnumerateRemoteFiles(path, mask, EnumerationOptions.AllDirectories);
+            IEnumerable<RemoteFileInfo> rfi = this.session.EnumerateRemoteFiles(path, mask, EnumerationOptions.EnumerateDirectories | EnumerationOptions.AllDirectories);
+
+            return rfi;
         }
 
         public void GetFiles(string remotePath, string localPath, bool remove, TransferOptions transferOptions)
