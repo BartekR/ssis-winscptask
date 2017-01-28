@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ssis-winscptask", "ssis-winscptask\ssis-winscptask.csproj", "{9C93A271-D6A7-4AB1-8884-75D956A00B6F}"
 EndProject
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SSIS", "SSIS\SSIS.dtproj", "{4C176D3F-AE35-4B43-BD05-2F09B4C9B8A3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ssis-winscpcm", "ssis-winscpcm\ssis-winscpcm.csproj", "{127457C1-19C8-4F38-B3A2-A2995F450096}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ssistaskdb", "ssistaskdb\ssistaskdb.sqlproj", "{1E9D7423-C214-4A86-98DA-DFEE2E9D1E97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +36,15 @@ Global
 		{127457C1-19C8-4F38-B3A2-A2995F450096}.Development|Any CPU.Build.0 = Debug|Any CPU
 		{127457C1-19C8-4F38-B3A2-A2995F450096}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{127457C1-19C8-4F38-B3A2-A2995F450096}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E9D7423-C214-4A86-98DA-DFEE2E9D1E97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E9D7423-C214-4A86-98DA-DFEE2E9D1E97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E9D7423-C214-4A86-98DA-DFEE2E9D1E97}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1E9D7423-C214-4A86-98DA-DFEE2E9D1E97}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E9D7423-C214-4A86-98DA-DFEE2E9D1E97}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{1E9D7423-C214-4A86-98DA-DFEE2E9D1E97}.Development|Any CPU.Deploy.0 = Debug|Any CPU
+		{1E9D7423-C214-4A86-98DA-DFEE2E9D1E97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E9D7423-C214-4A86-98DA-DFEE2E9D1E97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E9D7423-C214-4A86-98DA-DFEE2E9D1E97}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
